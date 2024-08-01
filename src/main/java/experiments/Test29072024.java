@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.security.SecureRandom;
+import java.time.LocalDate;
 
 public class Test29072024 {
 
@@ -16,7 +17,27 @@ public class Test29072024 {
 
     public static void main(String[] args) {
 
-        System.out.println(generateRandomString(37));
+        DayOfWeek today = DayOfWeek.FRIDAY;
+
+       System.out.println("Today is " + today.getName());
+        switch (today){
+            case SUNDAY:
+                break;
+            case MONDAY :
+                System.out.println("Today is monday");
+                break;
+            case FRIDAY:
+                System.out.println("Today is Friday");
+                break;
+            default:
+                System.out.println("Smthings wrong...");
+                break;
+
+        }
+
+
+
+      //  System.out.println(generateRandomString(37));
 
       //  System.out.println("INTEGER "+add(12, 12));
        // System.out.println("DOUBLE "+add(12.5, 12.2));
