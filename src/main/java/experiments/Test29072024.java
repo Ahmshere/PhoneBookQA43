@@ -1,3 +1,4 @@
+/*
 package experiments;
 
 import helpers.RetryAnalyzer;
@@ -6,6 +7,8 @@ import org.testng.annotations.Test;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test29072024 {
 
@@ -16,7 +19,6 @@ public class Test29072024 {
 
 
     public static void main(String[] args) {
-
         DayOfWeek today = DayOfWeek.FRIDAY;
 
        System.out.println("Today is " + today.getName());
@@ -42,23 +44,28 @@ public class Test29072024 {
       //  System.out.println("INTEGER "+add(12, 12));
        // System.out.println("DOUBLE "+add(12.5, 12.2));
       //  int[] numbers = {1,2,3,4,6,7,8};
-       /* for (int i = 0; i < 10; i++){
+       */
+/* for (int i = 0; i < 10; i++){
             System.out.println("Number "+i);
-        }*/
+        }*//*
+
 
        // dayPicker(1);
        // System.out.println("My \u001B[34mfirst test!");
 
-  /*      byte b1 = 127;
+  */
+/*      byte b1 = 127;
         short s = 32767;
         int i = 76538653;
     boolean t = true;
     char a = 'a';
     char b = 'b';
-*/
+*//*
+
 
     }
-    /**
+    */
+/**
      * Generates a random string of the specified length using
      * uppercase letters and digits.
      *
@@ -67,7 +74,8 @@ public class Test29072024 {
      * @return a random string of the specified length.
      * @throws IllegalArgumentException if length is less than 1
      * or greater than 1000.
-     */
+     *//*
+
     public static String generateRandomString(int length){
         if(length <= 0 || length > 1000){
             throw new IllegalArgumentException("Length must be between 1 and 1000 inclusive.");
@@ -91,11 +99,13 @@ public class Test29072024 {
 
 // My comment
 
-    /**
+    */
+/**
      *
      * @param a description
      * @param b description
-     */
+     *//*
+
     public static void theMethodGeneratesAString(int a, int b){
         int res = a+b;
     }
@@ -121,3 +131,4 @@ public class Test29072024 {
 
 
 }
+*/
