@@ -40,7 +40,7 @@ public class BaseTest {
         }
         else {
             throw new IllegalArgumentException("Invalid browser value : "+browser);}
-        driver = getDriver();
+       // driver = getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));

@@ -10,4 +10,5 @@ public class ContactsPage extends BasePage{
         setDriver(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,15),this);
     }
+
 }
