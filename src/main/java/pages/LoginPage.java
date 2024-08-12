@@ -55,4 +55,10 @@ public class LoginPage extends BasePage{
     }
 
 
+    public Alert clickByRegistrationButton() {
+        registrationButton.click();
+        return getAlertIfPresent();
+
+    }
+
 }

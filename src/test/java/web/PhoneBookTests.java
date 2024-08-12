@@ -2,6 +2,9 @@ package web;
 
 import config.BaseTest;
 import enums.TopMenuItem;
+import helpers.AlertHandler;
+import helpers.EmailGenerator;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +16,7 @@ import pages.MainPage;
 public class PhoneBookTests extends BaseTest {
 
     @Test
-    public void successfulLogin(){
+    public void successfulLogin() {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage
@@ -21,8 +24,21 @@ public class PhoneBookTests extends BaseTest {
                 .fillPasswordField("MyPassword123!")
                 .clickByLoginButton();
         // TASK 2
-      boolean result = ContactsPage
+        boolean result = ContactsPage
                 .isElementPersist(getDriver().findElement(By.xpath("//button[contains(text(),'Sign')]")));
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void registrationWithoutPassword(){
+        MainPage mainPage = new MainPage(getDriver());
+        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        Alert alert = loginPage
+                .fillEmailField(EmailGenerator.generateEmail(10,7,3))
+                .clickByRegistrationButton();
+        String expectedTextAlert = "Wrong";
+        boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedTextAlert);
+        Assert.assertTrue(isAlertHandled);
+    }
 }
+
