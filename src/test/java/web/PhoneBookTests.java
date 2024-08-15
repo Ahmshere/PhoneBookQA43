@@ -24,8 +24,8 @@ public class PhoneBookTests extends BaseTest {
                 .fillPasswordField("MyPassword123!")
                 .clickByLoginButton();
         // TASK 2
-        boolean result = ContactsPage
-                .isElementPersist(getDriver().findElement(By.xpath("//button[contains(text(),'Sign')]")));
+        ContactsPage cp = new ContactsPage(getDriver());
+        boolean result = cp.isSignButtonPersist();
         Assert.assertTrue(result);
     }
 

@@ -2,7 +2,9 @@ package helpers;
 
 public class EmailGenerator {
     public static void main(String[] args) {
-        System.out.println(generateEmail(10,5,3));
+
+        //System.out.println(generateEmail(10,5,3));
+        System.out.println(randomNumberAndChar());
     }
 
     public static String generateEmail(int a, int b , int c){
@@ -26,6 +28,16 @@ public class EmailGenerator {
 
     private static char randomChar(){
         return (char) ('a'+Math.random()*('z'-'a'));
+
+    }
+    private static char randomNumberAndChar(){
+        int rand = (int)(Math.random()*3);
+        switch (rand){
+            case 0: return (char) ('0'+Math.random()*10);
+            case 1: return (char) ('A'+Math.random()*25);
+           case 2:
+            default: return (char) ('a'+Math.random()*25);
+        }
 
     }
 

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class MainPage extends BasePage{
-    // TASK
+
     @FindBy(xpath = "//a[contains(text(),'LOGIN')]")
     WebElement loginTopMenuButton;
     public MainPage(WebDriver driver){

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import helpers.AlertHandler;
 
 import java.time.Duration;
 
@@ -23,9 +24,11 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[@name='registration']")
     WebElement registrationButton;
 
+    private  AlertHandler alertHandler;
     public LoginPage(WebDriver driver){
         setDriver(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,15),this);
+        this.alertHandler = new AlertHandler(driver);
     }
     public LoginPage fillEmailField(String email){
         emailField.sendKeys(email);
@@ -36,7 +39,7 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    private Alert getAlertIfPresent(){
+  /*  private Alert getAlertIfPresent(){
         try{
             WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(5));
             return wait.until(ExpectedConditions.alertIsPresent());
@@ -44,10 +47,10 @@ public class LoginPage extends BasePage{
             System.out.println("There is no alert...");
             return null;
         }
-    }
+    }*/
     public BasePage clickByLoginButton(){
         loginButton.click();
-        Alert alert = getAlertIfPresent();
+        Alert alert = alertHandler.getAlertIfPresent();
         if (alert != null){
             alert.accept();
             return  new LoginPage(driver);
@@ -57,8 +60,11 @@ public class LoginPage extends BasePage{
 
     public Alert clickByRegistrationButton() {
         registrationButton.click();
-        return getAlertIfPresent();
+        return alertHandler.getAlertIfPresent();
 
     }
+
+
+
 
 }
