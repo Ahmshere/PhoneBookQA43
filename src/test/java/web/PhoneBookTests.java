@@ -4,6 +4,8 @@ import config.BaseTest;
 import enums.TopMenuItem;
 import helpers.AlertHandler;
 import helpers.EmailGenerator;
+import helpers.PropertiesReaderXML;
+import interfaces.TestHelper;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -13,17 +15,16 @@ import pages.ContactsPage;
 import pages.LoginPage;
 import pages.MainPage;
 
-public class PhoneBookTests extends BaseTest {
+public class PhoneBookTests extends BaseTest implements TestHelper{
 
     @Test
     public void successfulLogin() {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage
-                .fillEmailField("mymegamail@mail.com")
-                .fillPasswordField("MyPassword123!")
+                .fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
+                .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD,XML_DATA_FILE))
                 .clickByLoginButton();
-        // TASK 2
         ContactsPage cp = new ContactsPage(getDriver());
         boolean result = cp.isSignButtonPersist();
         Assert.assertTrue(result);
@@ -40,5 +41,6 @@ public class PhoneBookTests extends BaseTest {
         boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedTextAlert);
         Assert.assertTrue(isAlertHandled);
     }
+
 }
 
