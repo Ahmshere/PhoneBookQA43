@@ -57,13 +57,16 @@ public class LoginPage extends BasePage{
         }else {return new ContactsPage(driver);}
     }
 
+    public Alert clickByLoginButtonAlert(){
+        loginButton.click();
+        return alertHandler.getAlertIfPresent();
+    }
 
     public Alert clickByRegistrationButton() {
         registrationButton.click();
         return alertHandler.getAlertIfPresent();
 
     }
-
 
 
 
