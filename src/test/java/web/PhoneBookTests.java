@@ -72,6 +72,7 @@ public class PhoneBookTests extends BaseTest implements TestHelper{
         addPage.fillContactFormAndSave(contact);
         ContactsPage contactsPage = new ContactsPage(getDriver());
         System.out.println("Contacts size: "+ contactsPage.getContactListSize());
+        TakeScreen.takeScreenShot(getDriver(),"loginOfAnExistingUserAddContact");
         Assert.assertTrue(contactsPage.getDataFromContactList(contact));
 
 
