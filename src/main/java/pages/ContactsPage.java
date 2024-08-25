@@ -22,7 +22,7 @@ public class ContactsPage extends BasePage {
     private WebElement saveButton;
 
     public ContactsPage(WebDriver driver) {
-        setDriver(driver);
+        super(driver);  // Вызов конструктора родительского класса
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
     }
 
@@ -42,7 +42,7 @@ public class ContactsPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement nameContact =
                 wait.until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath("//h2[contains(text(),'" + contact.getName().toString() + "')]")));
+                        .visibilityOfElementLocated(By.xpath("//h2[contains(text(),'" + contact.getName() + "')]")));
         nameContact.click();
         WebElement editButton = driver.findElement(By.xpath("//button[contains(text(),'Edit')]"));
         editButton.click();
@@ -67,19 +67,19 @@ public class ContactsPage extends BasePage {
         listcontact.setEmail(elementEmailValue);
         listcontact.setAddress(elementAddressValue);
         listcontact.setDescription(elementDescriptionValue);
-        boolean result = listcontact.equals(contact);
-        return result;
+        return listcontact.equals(contact);
     }
-    public String findOpenContactAndChangeFieldValue(Contact contact, ContactField fieldName, String newValue){
+
+    public String findOpenContactAndChangeFieldValue(Contact contact, ContactField fieldName, String newValue) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement contactFromTheList = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[h2[contains(text(),'"+contact.getName().toString()+"')]" +
-                                " and h3[contains(text(),'"+contact.getPhone().toString()+"')]]")
+                By.xpath("//div[h2[contains(text(),'" + contact.getName() + "')]" +
+                        " and h3[contains(text(),'" + contact.getPhone() + "')]]")
         ));
         contactFromTheList.click();
         WebElement editButton = driver.findElement(By.xpath("//button[contains(text(),'Edit')]"));
         editButton.click();
-        switch (fieldName){
+        switch (fieldName) {
             case NAME:
                 WebElement elementName = driver.findElement(By.xpath("//input[@placeholder='Name']"));
                 elementName.clear();
@@ -110,22 +110,18 @@ public class ContactsPage extends BasePage {
                 elementDescription.clear();
                 elementDescription.sendKeys(newValue);
                 break;
-            default: throw new IllegalArgumentException("Wrong field name..."+ fieldName);
+            default:
+                throw new IllegalArgumentException("Wrong field name: " + fieldName);
         }
         return newValue;
     }
 
-public void  clickSaveButton(String newValue){
-    saveButton.click();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public void clickSaveButton(String newValue) {
+        saveButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-    WebElement contactFromTheList = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//div[text()='"+newValue+"'] | //h2[text()='"+newValue+"'] | //h3[text()='"+newValue+"']")));
-    wait.until(ExpectedConditions.visibilityOf(contactFromTheList));
-}
-
-
-
-
-
+        WebElement contactFromTheList = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[text()='" + newValue + "'] | //h2[text()='" + newValue + "'] | //h3[text()='" + newValue + "']")));
+        wait.until(ExpectedConditions.visibilityOf(contactFromTheList));
+    }
 }

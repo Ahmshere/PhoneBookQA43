@@ -20,7 +20,9 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void successfulLogin() {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage
                 .fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
@@ -33,7 +35,8 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void registrationWithoutPassword() {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         Alert alert = loginPage
                 .fillEmailField(EmailGenerator.generateEmail(EmailGenerator.EmailType.VALID, 10, 7, 3))
                 .clickByRegistrationButton();
@@ -45,7 +48,8 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void loginWithoutPasswordPositive() {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         Alert alert = loginPage
                 .fillEmailField(EmailGenerator.generateEmail(EmailGenerator.EmailType.VALID, 10, 7, 3))
                 .clickByLoginButtonAlert();
@@ -58,11 +62,12 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void loginOfAnExistingUserAddContact() {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage.fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
                 .clickByLoginButton();
-        AddPage addPage = BasePage.openTopMenuItem(TopMenuItem.ADD);
+        AddPage addPage = basePage.openTopMenuItem(TopMenuItem.ADD);
         Contact contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
@@ -81,11 +86,12 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void loginOfAnExistingUserAddAndEditContact() {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage.fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
                 .clickByLoginButton();
-        AddPage addPage = BasePage.openTopMenuItem(TopMenuItem.ADD);
+        AddPage addPage = basePage.openTopMenuItem(TopMenuItem.ADD);
         Contact contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
@@ -108,11 +114,12 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void createAndDeleteContactUsingSerialization() throws IOException, ClassNotFoundException {
         MainPage mainPage = new MainPage(getDriver());
-        LoginPage loginPage = BasePage.openTopMenuItem(TopMenuItem.LOGIN);
+        BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage.fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
                 .clickByLoginButton();
-        AddPage addPage = BasePage.openTopMenuItem(TopMenuItem.ADD);
+        AddPage addPage = basePage.openTopMenuItem(TopMenuItem.ADD);
         Contact contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
