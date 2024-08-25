@@ -7,8 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class BasePage {
-    protected WebDriver driver;
-
+    protected static WebDriver driver;
+    public static void setDriver(WebDriver webDriver) {
+        driver = webDriver;
+    }
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
