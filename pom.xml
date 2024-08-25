@@ -36,7 +36,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
-                        <suiteXmlFile>src/main/resources/webtests.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
                         <!-- <suiteXmlFile>src/test/resources/testng2.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <systemPropertyVariables>
@@ -178,7 +178,7 @@
                         <version>3.2.5</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/main/resources/webtests.xml</suiteXmlFile>
+                                <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
