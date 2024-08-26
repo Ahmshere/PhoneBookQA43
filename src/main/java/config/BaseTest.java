@@ -11,12 +11,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pages.BasePage;
 
 import java.time.Duration;
 
 public class BaseTest {
     private WebDriver driver;
+
     public WebDriver getDriver(){
         return driver;
     }
@@ -25,6 +25,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
         System.out.println("Setting up browser: " + browser);
+
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
@@ -38,27 +39,22 @@ public class BaseTest {
         } else if (browser.equalsIgnoreCase("safari")) {
             driver = new SafariDriver();
         } else {
-            throw new IllegalArgumentException("Invalid browser value: " + browser);
+            WebDriverManager.firefoxdriver().setup();
+            FirefoxOptions option = new FirefoxOptions();
+            option.addPreference("intl.accept_languages", "en");
+            driver = new FirefoxDriver(option);
+            // throw new IllegalArgumentException("Invalid browser value: " + browser);
         }
 
-        if (driver == null) {
-            System.out.println("Driver is not initialized!");
-        } else {
-            System.out.println("Driver initialized successfully.");
-        }
-        driver = getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-
-@AfterMethod
+    @AfterMethod
     public void tearDown(){
-        driver.quit();
-}
-
-
-
-
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
