@@ -128,8 +128,8 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
         Contact.serializationContact(contact, "initContact.dat");
         Contact deserealizedContact = Contact.deserializationContact("initContact.dat");
         ContactsPage contactsPage = new ContactsPage(getDriver());
-        // Task Delete
-
+        contactsPage.openContactAndClickRemove(contact);
+       Assert.assertTrue(contactsPage.isContactAbsent(contact));
 
 
     }

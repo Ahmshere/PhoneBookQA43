@@ -127,4 +127,33 @@ public class ContactsPage extends BasePage {
                 By.xpath("//div[text()='" + newValue + "'] | //h2[text()='" + newValue + "'] | //h3[text()='" + newValue + "']")));
         wait.until(ExpectedConditions.visibilityOf(contactFromTheList));
     }
+
+    public void clickRemoveButton(){
+        WebElement removeButton = driver.findElement(By.xpath("//button[text()='Remove']"));
+        removeButton.click();
+    }
+    public void openContactAndClickRemove(Contact contact) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement  contactFromTheList =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//div[h2[contains(text(),'"+contact.getName().toString()+"')] and h3[contains(text(),'"+contact.getPhone().toString()+"')]]")));
+        contactFromTheList.click();
+        clickRemoveButton();
+    }
+    public boolean isContactAbsent(Contact contact) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        try {
+           return wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//div[h2[contains(text(),'" + contact.getName().toString() + "')] " +
+                            "and h3[contains(text(),'" + contact.getPhone().toString() + "')]]")));
+        }catch (TimeoutException e){
+            return false;
+        }
+    }
+
+
+
+
+
 }
