@@ -11,7 +11,7 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[contains(text(),'LOGIN')]")
     WebElement loginTopMenuButton;
     public MainPage(WebDriver driver){
-        super(driver);
+      //  super(driver);
         setDriver(driver);
         //super(driver);
         if (driver == null) {

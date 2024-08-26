@@ -18,6 +18,9 @@ public class BasePage {
         this.driver = driver;
     }
 
+    public BasePage() {
+    }
+
     public boolean isElementPersist(WebElement element) {
         try {
             element.isDisplayed();
