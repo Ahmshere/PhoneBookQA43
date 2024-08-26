@@ -19,8 +19,6 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
 
     @Test
     public void successfulLogin() {
-        //MainPage mainPage = new MainPage(getDriver());
-       BasePage basePage = new BasePage(getDriver());
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = mainPage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage

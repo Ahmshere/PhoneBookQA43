@@ -29,6 +29,7 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
+            option.addArguments("--headless");
             option.addArguments("--lang=en");
             driver = new ChromeDriver(option);
         } else if (browser.equalsIgnoreCase("firefox")) {
