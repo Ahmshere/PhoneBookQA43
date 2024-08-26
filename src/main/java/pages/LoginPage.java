@@ -26,7 +26,8 @@ public class LoginPage extends BasePage{
 
     private  AlertHandler alertHandler;
     public LoginPage(WebDriver driver){
-        super(driver);
+        setDriver(driver);
+        //super(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,15),this);
         this.alertHandler = new AlertHandler(driver);
     }

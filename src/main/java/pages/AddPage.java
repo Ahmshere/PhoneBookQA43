@@ -31,7 +31,8 @@ public class AddPage extends BasePage {
     WebElement saveButton;
 
     public AddPage(WebDriver driver) {
-        super(driver);
+        setDriver(driver);
+        //super(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
     }
 

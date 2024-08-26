@@ -46,8 +46,8 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void loginWithoutPasswordPositive() {
         MainPage mainPage = new MainPage(getDriver());
-        BasePage basePage = new BasePage(getDriver());
-        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
+        //BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = mainPage.openTopMenuItem(TopMenuItem.LOGIN);
         Alert alert = loginPage
                 .fillEmailField(EmailGenerator.generateEmail(EmailGenerator.EmailType.VALID, 10, 7, 3))
                 .clickByLoginButtonAlert();

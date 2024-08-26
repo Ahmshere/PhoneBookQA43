@@ -14,12 +14,12 @@ public class BasePage {
    public void setDriver(WebDriver driver) {
        this.driver = driver;
    }
-    public BasePage(WebDriver driver) {
+   /* public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public BasePage() {
-    }
+    }*/
 
     public boolean isElementPersist(WebElement element) {
         try {

@@ -24,7 +24,8 @@ public class ContactsPage extends BasePage {
     private WebElement saveButton;
 
     public ContactsPage(WebDriver driver) {
-        super(driver);  // Вызов конструктора родительского класса
+        setDriver(driver);
+        //super(driver);  // Вызов конструктора родительского класса
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
     }
 
