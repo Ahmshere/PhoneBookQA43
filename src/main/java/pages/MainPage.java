@@ -12,6 +12,9 @@ public class MainPage extends BasePage{
     WebElement loginTopMenuButton;
     public MainPage(WebDriver driver){
         super(driver);
+        if (driver == null) {
+            throw new IllegalArgumentException("WebDriver instance is null");
+        }
         driver.get("https://telranedu.web.app/");
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,15),this);
     }

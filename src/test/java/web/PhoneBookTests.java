@@ -85,12 +85,11 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     @Test
     public void loginOfAnExistingUserAddAndEditContact() {
         MainPage mainPage = new MainPage(getDriver());
-        BasePage basePage = new BasePage(getDriver());
-        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
+        LoginPage loginPage = mainPage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage.fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
                 .clickByLoginButton();
-        AddPage addPage = basePage.openTopMenuItem(TopMenuItem.ADD);
+        AddPage addPage = loginPage.openTopMenuItem(TopMenuItem.ADD);
         Contact contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
