@@ -3,4 +3,5 @@
 <properties>
 <entry key="mypass">MyPassword123!</entry>
 <entry key="myuser">mymegamail@mail.com</entry>
+<entry key="token">eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoibXltZWdhbWFpbEBtYWlsLmNvbSIsImlzcyI6IlJlZ3VsYWl0IiwiZXhwIjoxNzI1MjkyNTM3LCJpYXQiOjE3MjQ2OTI1Mzd9.b56ObDnDKsIpUVTl9e7kptRJYSYrDnxKGnBEjWsnDCk</entry>
 </properties>
