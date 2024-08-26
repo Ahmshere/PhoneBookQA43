@@ -111,14 +111,14 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
     }
 
     @Test
-    public void createAndDeleteContactUsingSerialization() throws IOException, ClassNotFoundException {
+    public void createAndDeleteContactUsingSerialization() throws IOException, ClassNotFoundException, InterruptedException {
         MainPage mainPage = new MainPage(getDriver());
-        BasePage basePage = new BasePage(getDriver());
-        LoginPage loginPage = basePage.openTopMenuItem(TopMenuItem.LOGIN);
+        //BasePage basePage = new BasePage(getDriver());
+        LoginPage loginPage = mainPage.openTopMenuItem(TopMenuItem.LOGIN);
         loginPage.fillEmailField(PropertiesReaderXML.getProperties(MY_USER, XML_DATA_FILE))
                 .fillPasswordField(PropertiesReaderXML.getProperties(MY_PASSWORD, XML_DATA_FILE))
                 .clickByLoginButton();
-        AddPage addPage = basePage.openTopMenuItem(TopMenuItem.ADD);
+        AddPage addPage = loginPage.openTopMenuItem(TopMenuItem.ADD);
         Contact contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
@@ -130,6 +130,7 @@ public class PhoneBookTests extends BaseTest implements TestHelper {
         addPage.fillContactFormAndSave(contact);
         Contact.serializationContact(contact, "initContact.dat");
         Contact deserealizedContact = Contact.deserializationContact("initContact.dat");
+        ContactsPage contactsPage = new ContactsPage(getDriver());
         // Task Delete
 
 

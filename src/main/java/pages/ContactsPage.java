@@ -3,6 +3,7 @@ package pages;
 import enums.ContactField;
 import models.Contact;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class ContactsPage extends BasePage {
+
 
     @FindBy(xpath = "//button[contains(text(),'Sign')]")
     private WebElement signButton;
