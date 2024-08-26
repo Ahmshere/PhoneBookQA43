@@ -39,11 +39,8 @@ public class BaseTest {
         } else if (browser.equalsIgnoreCase("safari")) {
             driver = new SafariDriver();
         } else {
-            WebDriverManager.firefoxdriver().setup();
-            FirefoxOptions option = new FirefoxOptions();
-            option.addPreference("intl.accept_languages", "en");
-            driver = new FirefoxDriver(option);
-            // throw new IllegalArgumentException("Invalid browser value: " + browser);
+
+            throw new IllegalArgumentException("Invalid browser value: " + browser);
         }
 
         driver.manage().window().maximize();
