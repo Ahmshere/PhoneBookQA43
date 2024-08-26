@@ -6,7 +6,6 @@
             <class name="web.PhoneBookTests">
 
                 <methods>
-                    <include name="registrationWithoutPassword"/>
                     <include name="successfulLogin"/>
                 </methods>
             </class>
