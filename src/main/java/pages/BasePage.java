@@ -11,6 +11,9 @@ public class BasePage {
    /*public static void setDriver(WebDriver webDriver) {
         driver = webDriver;
     }*/
+   public void setDriver(WebDriver driver) {
+       this.driver = driver;
+   }
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }

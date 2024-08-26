@@ -12,6 +12,8 @@ public class MainPage extends BasePage{
     WebElement loginTopMenuButton;
     public MainPage(WebDriver driver){
         super(driver);
+        setDriver(driver);
+        //super(driver);
         if (driver == null) {
             throw new IllegalArgumentException("WebDriver instance is null");
         }
