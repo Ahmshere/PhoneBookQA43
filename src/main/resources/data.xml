@@ -3,5 +3,5 @@
 <properties>
 <entry key="mypass">MyPassword123!</entry>
 <entry key="myuser">mymegamail@mail.com</entry>
-<entry key="token">eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoibXltZWdhbWFpbEBtYWlsLmNvbSIsImlzcyI6IlJlZ3VsYWl0IiwiZXhwIjoxNzI1ODkzMzMzLCJpYXQiOjE3MjUyOTMzMzN9.Q1jVAqYU7sPhkn0Mx7MzGOZnKUEmdyc6dWZ83uAGWN4</entry>
+<entry key="token">eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoibXltZWdhbWFpbEBtYWlsLmNvbSIsImlzcyI6IlJlZ3VsYWl0IiwiZXhwIjoxNzI1OTA0MDE3LCJpYXQiOjE3MjUzMDQwMTd9.Pwy-0sLDE768l11eS7YCWbdxXSNzAfBmLJS_9qBQqY4</entry>
 </properties>

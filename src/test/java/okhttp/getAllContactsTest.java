@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class getAllContactsTest implements TestHelper {
+public class getAllContactsTest  implements TestHelper {
 
     @Test
     public void getAllContacts() throws IOException {

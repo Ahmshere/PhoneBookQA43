@@ -18,10 +18,19 @@ public class Contact implements Serializable {
     String address;
     String description;
 
+    public Contact(String name, String lastName, String phone, String email, String address) {
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
@@ -38,6 +47,11 @@ public class Contact implements Serializable {
         this.email = email;
         this.address = address;
         this.description = description;
+    }
+
+    public Contact(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @Override
@@ -142,4 +156,5 @@ public class Contact implements Serializable {
         serializationContact(contact, "testcontact.ser");
         System.out.println("DE: "+deserializationContact("testcontact.dat").toString());
     }
+
 }
