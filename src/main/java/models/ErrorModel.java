@@ -8,6 +8,9 @@ public class ErrorModel {
     Object message;
     String path;
 
+    public ErrorModel() {
+    }
+
     @Override
     public String toString() {
         return "ErrorModel{" +
