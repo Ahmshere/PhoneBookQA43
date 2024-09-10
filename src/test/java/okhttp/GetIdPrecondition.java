@@ -8,6 +8,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class GetIdPrecondition implements TestHelper {
 
     String id;
 
+    @BeforeTest
     public void createNewContactGetIdPrecondition() throws IOException {
         Contact contact = new Contact(NameAndLastNameGenerator.generateName()
                 , NameAndLastNameGenerator.generateLastName(),
@@ -30,7 +32,7 @@ public class GetIdPrecondition implements TestHelper {
                 .build();
         Response response = CLIENT.newCall(request).execute();
         ContactResponseModel contactResponseModel = GSON.fromJson(response.body().string(), ContactResponseModel.class);
-        System.out.println("RESPONSE: " + contactResponseModel.getMessage()+ contact.toString());
+        System.out.println("RESPONSE: " + contactResponseModel.getMessage() + contact.toString());
         id = IdExtractor.getId(contactResponseModel.getMessage());
     }
 

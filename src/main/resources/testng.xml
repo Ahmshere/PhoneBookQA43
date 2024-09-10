@@ -3,10 +3,9 @@
     <test name="PnoneBookWeb">
 
         <classes>
-            <class name="web.PhoneBookTests">
-
+            <class name="restassured.LoginTest">
                 <methods>
-                    <include name="successfulLogin"/>
+                    <include name="login"/>
                 </methods>
             </class>
         </classes>

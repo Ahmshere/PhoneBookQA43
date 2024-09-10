@@ -17,8 +17,6 @@ public class ContactResponseModel {
 
     @Override
     public String toString() {
-        return "ContactResponseModel{" +
-                "message='" + message + '\'' +
-                '}';
+        return message;
     }
 }
