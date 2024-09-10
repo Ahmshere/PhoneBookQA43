@@ -35,8 +35,6 @@ public class LoginTest implements TestHelper {
         propertiesWriterXML.setProperty("token", response.getToken(), false, XML_DATA_FILE);
     }
 
-    @Description("Login using DataProvider")
-    @Severity(value = SeverityLevel.CRITICAL)
     @Test(dataProvider = "loginData", dataProviderClass = TestData.class)
     public void loginNegative(String username, String password, int statusCode){
         AuthenticationRequestModel requestModel = AuthenticationRequestModel
