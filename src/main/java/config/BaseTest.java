@@ -1,6 +1,7 @@
 package config;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,10 +18,11 @@ import java.time.Duration;
 public class BaseTest {
     private WebDriver driver;
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return driver;
     }
 
+    @Step("Test setup")
     @Parameters("browser")
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
@@ -29,7 +31,7 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
-           // option.addArguments("--headless");
+            // option.addArguments("--headless");
             option.addArguments("--lang=en");
             driver = new ChromeDriver(option);
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -49,8 +51,9 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
+    @Step("Completing the test")
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }

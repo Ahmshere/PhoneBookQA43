@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class AddNewContacts extends ContactGeneratorPrecondition implements TestHelper {
+public class AddNewContacts implements TestHelper {
 
     @Test
     public void addNewContact(){

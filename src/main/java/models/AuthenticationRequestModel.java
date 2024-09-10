@@ -1,4 +1,7 @@
 package models;
+
+import io.qameta.allure.Step;
+
 // Lombok !!!!!
 public class AuthenticationRequestModel {
 
@@ -12,7 +15,7 @@ public class AuthenticationRequestModel {
         this.password=password;
         return this;
     }
-
+    @Step("Get user name")
     public String getUsername() {
         return username;
     }
@@ -28,6 +31,7 @@ public class AuthenticationRequestModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public AuthenticationRequestModel(String username, String password) {
         this.username = username;

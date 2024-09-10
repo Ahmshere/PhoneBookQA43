@@ -1,6 +1,7 @@
 package interfaces;
 
 import com.google.gson.Gson;
+import io.qameta.allure.Step;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 

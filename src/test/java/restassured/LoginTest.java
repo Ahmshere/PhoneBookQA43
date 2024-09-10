@@ -5,6 +5,8 @@ import helpers.PropertiesReaderXML;
 import helpers.PropertiesWriterXML;
 import interfaces.TestHelper;
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import models.AuthenticationRequestModel;
@@ -34,11 +36,13 @@ public class LoginTest implements TestHelper {
     }
 
     @Description("Login using DataProvider")
+    @Severity(value = SeverityLevel.CRITICAL)
     @Test(dataProvider = "loginData", dataProviderClass = TestData.class)
     public void loginNegative(String username, String password, int statusCode){
         AuthenticationRequestModel requestModel = AuthenticationRequestModel
                 .username(username)
                 .password(password);
+
       ErrorModel errorModel =  given().body(requestModel)
                 .contentType(ContentType.JSON)
                 .when()
