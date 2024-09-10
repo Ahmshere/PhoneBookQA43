@@ -4,6 +4,8 @@ import config.TestData;
 import helpers.PropertiesReaderXML;
 import helpers.PropertiesWriterXML;
 import interfaces.TestHelper;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import models.AuthenticationRequestModel;
 import models.AuthenticationResponseModel;
@@ -13,7 +15,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class LoginTest implements TestHelper {
-    @Test
+    @Test(description = "Login Positive")
     public void loginPositive(){
     AuthenticationRequestModel requestModel = AuthenticationRequestModel
             .username(PropertiesReaderXML.getProperties("myuser",XML_DATA_FILE))
@@ -31,6 +33,7 @@ public class LoginTest implements TestHelper {
         propertiesWriterXML.setProperty("token", response.getToken(), false, XML_DATA_FILE);
     }
 
+    @Description("Login using DataProvider")
     @Test(dataProvider = "loginData", dataProviderClass = TestData.class)
     public void loginNegative(String username, String password, int statusCode){
         AuthenticationRequestModel requestModel = AuthenticationRequestModel
