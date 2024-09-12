@@ -53,10 +53,10 @@ public class LoginTest implements TestHelper {
                 .as(ErrorModel.class);
         System.out.println(errorModel.getMessage());
     }
-
     private ApiSteps apiSteps = new ApiSteps();
 
     @Test(description = "Login positive steps")
+    @Severity(SeverityLevel.CRITICAL)
     public void loginPositiveSteps() {
         String username = PropertiesReaderXML.getProperties("myuser", XML_DATA_FILE);
         String password = PropertiesReaderXML.getProperties("mypass", XML_DATA_FILE);
@@ -65,6 +65,5 @@ public class LoginTest implements TestHelper {
         Response response = apiSteps.sendLoginRequest(requestModel, BASE_URL + LOGIN_PATH);
         AuthenticationResponseModel responseModel = response.as(AuthenticationResponseModel.class);
         apiSteps.saveToken(responseModel.getToken());
-
     }
 }
