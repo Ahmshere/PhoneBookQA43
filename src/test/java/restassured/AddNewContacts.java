@@ -10,17 +10,11 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class AddNewContacts implements TestHelper {
+public class AddNewContacts extends ContactGeneratorPrecondition implements TestHelper {
 
     @Test
     public void addNewContact(){
-        Contact contact = new Contact(
-                NameAndLastNameGenerator.generateName(),
-                NameAndLastNameGenerator.generateLastName(),
-                PhoneNumberGenerator.generatePhoneNumber(),
-                EmailGenerator.generateEmail(EmailGenerator.EmailType.VALID, 5,5,3),
-                AddressGEnerator.generateAddress(),"descr"
-        );
+        Contact contact = getContact();
         Response response = given()
                 .header(AUTHORIZATION_HEADER, PropertiesReaderXML.getProperties("token", XML_DATA_FILE))
                 .body(contact)

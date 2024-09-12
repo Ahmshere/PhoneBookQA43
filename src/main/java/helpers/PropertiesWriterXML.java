@@ -1,5 +1,7 @@
 package helpers;
 
+import io.qameta.allure.Step;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +14,7 @@ public class PropertiesWriterXML {
     }
     Properties properties = new Properties();
 
+    @Step("Writing a property to an XML file")
     public void setProperty(String key, String value, boolean clearFile, String path){
         if(!clearFile){
             try(FileInputStream fileInputStream = new FileInputStream(path)){

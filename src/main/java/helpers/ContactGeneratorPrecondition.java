@@ -6,10 +6,15 @@ import org.testng.annotations.BeforeMethod;
 
 public class ContactGeneratorPrecondition {
 
-    @Step("Creating a Contact Entity")
+    private Contact contact;
+
+    public Contact getContact() {
+        return contact;
+    }
+    @Step("Creating a new contact entity.")
     @BeforeMethod
     public void createNewContact(){
-        Contact contact = new Contact(
+         contact = new Contact(
                 NameAndLastNameGenerator.generateName(),
                 NameAndLastNameGenerator.generateLastName(),
                 PhoneNumberGenerator.generatePhoneNumber(),
