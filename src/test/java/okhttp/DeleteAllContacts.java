@@ -1,4 +1,4 @@
-/*
+
 package okhttp;
 
 import helpers.PropertiesReaderXML;
@@ -14,16 +14,21 @@ import java.io.IOException;
 
 public class DeleteAllContacts implements TestHelper {
 
+    @Test
+    public  void clearContacts() throws IOException {
+        Request request = new Request.Builder()
                 .url(BASE_URL+DELETE_ALL_CONTACTS)
-                .addHeader(AUTHORIZATION_HEADER, PropertiesReaderXML.getProperties("token", XML_DATA_FILE))
-                .delete().build();
+                .addHeader("Authorization", PropertiesReaderXML.getProperties("token", XML_DATA_FILE))
+                .delete()
+                .build();
         Response response = CLIENT.newCall(request).execute();
-       // response.code();
+        System.out.println("Code: "+response.code());
         ContactResponseModel contactResponseModel =
                 GSON.fromJson(response.body().string(), ContactResponseModel.class);
-        System.out.println(contactResponseModel.getMessage());
-        Assert.assertTrue(contactResponseModel.getMessage().contains("All co"));
+        System.out.println("Message"+contactResponseModel.getMessage());
+        //  Assert.assertEquals(contactResponseModel.getMessage(),"All contacts was deleted!");
+        Assert.assertTrue(contactResponseModel.getMessage().contains("All contacts"));
     }
 
 }
-*/
+
